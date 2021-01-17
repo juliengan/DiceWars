@@ -105,6 +105,13 @@ public class TestPane extends JPanel {
         frame.pack();
         frame.setVisible(true);
 
+        JFrame frame2 = new PlayingInterface("Dice Wars");
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setLocationRelativeTo(null);
+        frame2.setPreferredSize(new Dimension(780, 450));
+        frame2.pack();
+        frame2.setVisible(false);
+
 
 
   /*          }
