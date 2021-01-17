@@ -441,6 +441,8 @@ public class Game {
         return players;
     }
 
+    //public String getName(Integer id){return players(id);}
+
     /*********** SETTERS *********/
     public void setAllTerritories(ArrayList<Territory> allTerritories) {
         this.allTerritories = allTerritories;

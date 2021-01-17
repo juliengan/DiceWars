@@ -80,42 +80,7 @@ public class TestPane extends JPanel {
 }
 
     public static void main(String[] args) throws Exception, InvalidAttackingTerritory, InvalidAttackedTerritory {
-        /*************** Graphical interface *****************/
 
-       /* EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    ex.printStackTrace();
-                }
-*/
-
-               // JFrame frame = new JFrame("Dice Wars");
-             //   Menu diceWarsMenu = new Menu("Dice Wars : Menu ", true);
-        // Playing diceWars = new Playing("Dice Wars : Playing ");
-            //    frame.add(diceWarsMenu);
-               // frame.add(diceWars);
-
-        JFrame frame = new DiceWarsInterface("Dice Wars");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setLocationRelativeTo(null);
-        frame.setPreferredSize(new Dimension(780, 450));
-        frame.pack();
-        frame.setVisible(true);
-
-        JFrame frame2 = new PlayingInterface("Dice Wars");
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setLocationRelativeTo(null);
-        frame2.setPreferredSize(new Dimension(780, 450));
-        frame2.pack();
-        frame2.setVisible(false);
-
-
-
-  /*          }
-        });*/
 
         /**************** Game configuration *****************/
 
@@ -155,54 +120,95 @@ public class TestPane extends JPanel {
         //Creation of a list of all territories
         ArrayList<Territory> allTerritories = new ArrayList<Territory>();
 
-        /**************** CONFIGURATION *****************/
 
-        //Ask the number of players and create each players with their id and names
-        players = creationOfPlayers(input, players);
+        /*************** Graphical interface *****************/
 
-        //The player choose if he want a csv file or a random map + creation of the map
-        Map map = new Map(players.size());
+        //creation of two players
+        //ArrayList<Player> players = new ArrayList<>();
 
-
-        /**************** INITIALIZATION ****************/
-
-
-        //Creation of the game. Parameters : players and map
-        Game game = new Game(players, map);
-        game.setAllTerritories(game.getMap().getListOfTerritories());
-
-        //display of the map
-        game.displayMap(game.getPlayers().size());
+        //Initialize a new game party
+       // Game is a global variable (accessible in inner class)
+         Game newGame = null;
 
 
+       /* EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                    ex.printStackTrace();
+                }*/
 
 
-        //Distribution of territories between all players
-        game.territoriesDistribution( random);
+                /*JFrame frame = new JFrame("Dice Wars");
+                Menu diceWarsMenu = new Menu("Dice Wars : Menu ", true);*/
+           //     Playing diceWars = new Playing("Dice Wars : Playing ");
+                //    frame.add(diceWarsMenu);
+                // frame.add(diceWars);
+
+        JFrame frame = new DiceWarsInterface("Dice Wars", players);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setLocationRelativeTo(null);
+        frame.setPreferredSize(new Dimension(780, 450));
+        frame.pack();
+        frame.setVisible(true);
+
+        JFrame frame2 = new PlayingInterface("Dice Wars");
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setLocationRelativeTo(null);
+        frame2.setPreferredSize(new Dimension(780, 450));
+        frame2.pack();
+        frame2.setVisible(false);
 
 
+/*
+            }
+        });
 
-        //display of the map
-        game.displayMap(game.getPlayers().size());
+  */              /**************** CONFIGURATION *****************/
 
+                //Ask the number of players and create each players with their id and names
+                players = creationOfPlayers(input, players);
 
-        System.out.println("Territoire de P1");
-        for(Territory t : game.getPlayers().get(0).getTerritories())
-            System.out.println(t.getId());
+                //The player choose if he want a csv file or a random map + creation of the map
+                Map map = new Map(players.size());
 
-        System.out.println("Territoire de P2");
-        for(Territory t : game.getPlayers().get(1).getTerritories())
-            System.out.println(t.getId());
-
-        //Distribution strength for territories (number of dices per territory)
-        final int totalStrength = 16 ;
-        game.distributionStrengthTerritory(totalStrength, game.getPlayers().get(1), random,firstDistribution);
-            game.distributionStrengthTerritory(totalStrength, game.getPlayers().get(0), random,firstDistribution);
+                /**************** INITIALIZATION ****************/
 
 
+                //Creation of the game. Parameters : players and map
+                Game game = new Game(players, map);
+                game.setAllTerritories(game.getMap().getListOfTerritories());
 
-        //display of the map
-        game.displayMap(game.getPlayers().size());
+                //display of the map
+                game.displayMap(game.getPlayers().size());
+
+
+                //Distribution of territories between all players
+                game.territoriesDistribution(random);
+
+
+                //display of the map
+                game.displayMap(game.getPlayers().size());
+
+
+                System.out.println("Territoire de P1");
+                for (Territory t : game.getPlayers().get(0).getTerritories())
+                    System.out.println(t.getId());
+
+                System.out.println("Territoire de P2");
+                for (Territory t : game.getPlayers().get(1).getTerritories())
+                    System.out.println(t.getId());
+
+                //Distribution strength for territories (number of dices per territory)
+                final int totalStrength = 16;
+                game.distributionStrengthTerritory(totalStrength, game.getPlayers().get(1), random, firstDistribution);
+                game.distributionStrengthTerritory(totalStrength, game.getPlayers().get(0), random, firstDistribution);
+
+
+                //display of the map
+                game.displayMap(game.getPlayers().size());
 
 /*
 
@@ -212,7 +218,7 @@ public class TestPane extends JPanel {
 
           /******************** PLAYING *********************/
 
-        //------------------------------------------------------------------------------------------
+                //------------------------------------------------------------------------------------------
 /*
           // Choose the first player randomly
           int firstPlayer = random.nextInt(game.getPlayers().size());
@@ -252,7 +258,7 @@ public class TestPane extends JPanel {
              switch(game.askAction(input,indexPlayer)){
 
                  case 1: /***ATTACK***/
-        // The current player attack, we save its move if it is valid
+                // The current player attack, we save its move if it is valid
  /*                    move = game.getPlayers().get(indexPlayer).attackTerritory(input);
                      if(move == null)
                          continue;
@@ -262,7 +268,7 @@ public class TestPane extends JPanel {
                      break;
 
                  case 2: /**PASS**/
-        // If the  player pass, we increase the index of the next player
+                // If the  player pass, we increase the index of the next player
   /*                  indexPlayer++;
                      if(indexPlayer == players.size())
                         indexPlayer = 0;
@@ -303,5 +309,5 @@ public class TestPane extends JPanel {
         }
 
 */
-    }
-    }
+            }
+        }

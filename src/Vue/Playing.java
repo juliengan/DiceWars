@@ -17,9 +17,11 @@ public class Playing extends JFrame {
     //player and the strength of the territory
     //realization : create another constructor for the map to display in the 'Map' class
 
-    JButton[][] jbut = { { new JButton("0"), new JButton("1"), new JButton("2") },
-            { new JButton("3"), new JButton("4"), new JButton("5"), new JButton("6"), new JButton("7") },
-            { new JButton("8"), new JButton("9") }, { new JButton("10") }
+    JButton[][] jbut = {
+            { new JButton("0"), new JButton("1"), new JButton("2") },
+            { new JButton("3"), new JButton("4"), new JButton("5")},
+                    {new JButton("6"), new JButton("7"), new JButton("8")},
+
     };
 
     public Playing(String title) {

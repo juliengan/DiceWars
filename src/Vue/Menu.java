@@ -72,10 +72,10 @@ public class Menu extends JFrame {
         add(p2, "East");
         add(p3, "South");
         pack();
-        setSize(700,500);
-        setVisible(true);
+     //   setSize(700,500);
+     /*   setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+*/
         //once the player clicked on "Play", retrieve all the choices
 
         /**nb players**/
