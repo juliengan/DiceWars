@@ -5,9 +5,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Menu extends JFrame {
-    private Integer nbPlayers;
+    /*private Integer nbPlayers;
     private ArrayList<String> names;
-
+*/
     public Menu(String gameTitle, boolean menu){
         super(gameTitle);
 
@@ -79,11 +79,11 @@ public class Menu extends JFrame {
         //once the player clicked on "Play", retrieve all the choices
 
         /**nb players**/
-        Integer playerChoice = (Integer) jComboBox.getEditor().getItem();
+       /* Integer playerChoice = (Integer) jComboBox.getEditor().getItem();
         System.out.println(playerChoice);
-
+*/
         /***player names**/ //stacked inside a String list (size : nbPlayers)
-        names = new ArrayList<String>();
+  /*      names = new ArrayList<String>();
         for (int i = 0 ; i < playerChoice ; i++)
         {
             //retrieve the name of first player then then player
@@ -97,6 +97,7 @@ public class Menu extends JFrame {
             System.out.println(name);
         }
 
+   */
 
     }
 }

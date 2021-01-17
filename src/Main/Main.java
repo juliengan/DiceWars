@@ -1,13 +1,13 @@
 package Main;
-import Datas.Move;
 import Datas.Player;
 import Datas.Territory;
 import Exceptions.InvalidAttackedTerritory;
 import Exceptions.InvalidAttackingTerritory;
 import Logic.Game;
 import Datas.Map;
+import Vue.DiceWarsInterface;
 import Vue.Playing;
-import Vue.Menu;
+import Vue.PlayingInterface;
 
 //graphical interface
 import javax.swing.*;
@@ -15,42 +15,13 @@ import java.awt.*;
 
 import java.util.ArrayList;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main extends JFrame {
 
-    /*************** Choice of the map  *******************/
 
-        static Map mapChoice(Scanner input){
-
-        // Choice of the map
-        System.out.println("Choose the map you want : ");
-        System.out.println("1. From CSV file");
-        System.out.println("2. Map in the game ");
-
-        int choiceMap = input.nextInt();
-
-        switch(choiceMap){
-            case 1:
-                //constructor csv file
-                System.out.println("opening a file ...");
-               break;
-
-            case 2 :
-                //Load a map from the program
-               // Map map = new Map();
-               // return map;
-
-            default :
-                System.out.println("Non-valid input");
-                break;
-        }
-
-        return null;
-    }
-
-/*************************************************************/
 
 
 /************** Choice number of players *********************/
@@ -111,7 +82,7 @@ public class TestPane extends JPanel {
     public static void main(String[] args) throws Exception, InvalidAttackingTerritory, InvalidAttackedTerritory {
         /*************** Graphical interface *****************/
 
-        EventQueue.invokeLater(new Runnable() {
+       /* EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -119,18 +90,25 @@ public class TestPane extends JPanel {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                     ex.printStackTrace();
                 }
+*/
 
-                JFrame frame = new JFrame("Dice Wars");
-                Playing diceWars = new Playing("Dice Wars : Playing ");
-                Menu diceWarsMenu = new Menu("Dice Wars : Menu ", true);
-                frame.add(diceWarsMenu);
-                frame.add(diceWars);
-                frame.pack();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-            }
-        });
+               // JFrame frame = new JFrame("Dice Wars");
+             //   Menu diceWarsMenu = new Menu("Dice Wars : Menu ", true);
+        // Playing diceWars = new Playing("Dice Wars : Playing ");
+            //    frame.add(diceWarsMenu);
+               // frame.add(diceWars);
+
+        JFrame frame = new DiceWarsInterface("Dice Wars");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setLocationRelativeTo(null);
+        frame.setPreferredSize(new Dimension(780, 450));
+        frame.pack();
+        frame.setVisible(true);
+
+
+
+  /*          }
+        });*/
 
         /**************** Game configuration *****************/
 
